@@ -1,0 +1,34 @@
+﻿@model HomeDetailsViewModel
+@{
+
+    ViewBag.Title = "Student Information details page";
+    var photoPath = "~/images/" + (Model.Student.PhotoPath??"noimage.png");
+}
+    <h3>  @Model.PageTitle</h3>
+
+    <div class="row justfy-content-center m-3">
+        <div class=" col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1>@Model.Student.Name </h1>
+                </div>
+
+                <div class=" card-body text-center">
+                    <img class=" car-img-top" src="@photoPath" asp-append-version="true" />
+
+                    <h4>Student ID: @Model.Student.Id</h4>
+                    <h4>Student Email: @Model.Student.Email</h4>
+                    <h4>Student ClassName: @Model.Student.ClassName</h4>
+                </div>
+                <div class=" card-footer text-center">
+                    <a asp-action="Index" asp-controller="home" class="btn btn-primary">return</a>
+                    <a href="#" class="btn btn-primary">edit</a>
+                    <a href="#" class="btn btn-danger">delete</a>
+                </div>
+            </div>
+        </div>
+     </div>   
+    
+@section Scripts{ 
+        <script src="~/js/CustomScript.js"></script>
+}
