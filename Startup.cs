@@ -52,7 +52,14 @@ namespace StudentManagmen
                 //DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions();
                 //developerExceptionPageOptions.SourceCodeLineCount = 1;
                 app.UseDeveloperExceptionPage();
+
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            }
+
 
             //midllware 
             app.UseStaticFiles();
@@ -66,17 +73,8 @@ namespace StudentManagmen
             app.UseMvc(routes => { routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"); });
             //app.UseMvc();
 
-            app.Run(async (context) =>
-            {
-                //throw new Exception("error");
-                await context.Response.WriteAsync("hello world");
-                
-            });
+            app.UseStatusCodePagesWithRedirects("/Error/{0}");
 
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
-
-            app.UseMvc();
         }
     }
 }

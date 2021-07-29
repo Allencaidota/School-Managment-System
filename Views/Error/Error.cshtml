@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Error";
+}
+
+<h3>There is a Error in this page.</h3>
+
+<h3>Sorry about this.</h3>
+
+<h5>You can use Allencaidota@gmail.com to Contact me</h5>
+
+<hr />
+
+<div class="alert alert-danger">
+    <h5>Error path: </h5>
+    <hr />
+    <p>@ViewBag.ExceptionPath</p>
+</div>
+
+<div class="alert alert-danger">
+    <h5>Error Info: </h5>
+    <hr />
+    <p>@ViewBag.ExceptionMessage</p>
+</div>
+
+
+<div class="alert alert-danger">
+    <h5>Error stack: </h5>
+    <hr />
+    <p>@ViewBag.StackTrace</p>
+</div>
+
