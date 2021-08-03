@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using StudentManagmen.ViewModels;
 using Microsoft.AspNetCore.Hosting.Internal;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace StudentManagmen.Controllers
 {
@@ -15,11 +16,13 @@ namespace StudentManagmen.Controllers
     {
         private readonly IStudentRepository _studentRepository;
         private readonly HostingEnvironment hostingEnvironment;
+        private readonly ILogger logger;
 
-        public HomeController (IStudentRepository studentRepository, HostingEnvironment hostingEnvironment)
+        public HomeController (IStudentRepository studentRepository, HostingEnvironment hostingEnvironment, ILogger<HomeController> logger)
         {
             _studentRepository = studentRepository;
             this.hostingEnvironment = hostingEnvironment;
+            this.logger = logger;
         }
 
         /*[Route("")]
@@ -35,6 +38,12 @@ namespace StudentManagmen.Controllers
         //[Route("Home/Details/{id?}")]
         public IActionResult Details(int id)
         {
+            logger.LogTrace("Trace log");
+            logger.LogDebug("Debug log");
+            logger.LogInformation("Information log");
+            logger.LogWarning("Warning log");
+            logger.LogError("error log");
+            logger.LogCritical("Critical log");
 
             Student student = _studentRepository.GetStudent(id);
             
